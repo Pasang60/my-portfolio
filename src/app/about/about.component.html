@@ -4,8 +4,7 @@
   [class.bg-secondary]="darkMode"
   [class.text-white]="darkMode"
   [class.bg-white]="!darkMode"
-  style="scroll-margin-top: 80px;"
->
+  style="scroll-margin-top: 80px;">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -19,30 +18,23 @@
       <div class="col-lg-6 mb-4 mb-lg-0">
         <img
           src="https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt="Profile photo of Pasang Gelbu Sherpa"
-          class="img-fluid rounded shadow-lg"
-        />
+          alt="About Pasang"
+          class="img-fluid rounded shadow-lg" />
       </div>
       <div class="col-lg-6">
         <h3 class="mb-4">Full Stack Developer & Computer Science Student</h3>
         <p
           class="mb-4"
-          [ngClass]="{
-            'text-light': darkMode,
-            'text-muted': !darkMode
-          }"
-        >
+          [class.text-light]="darkMode"
+          [class.text-muted]="!darkMode">
           I am Pasang Gelbu Sherpa, currently pursuing my Bachelor's in Computer Application (BCA)
           at Aadim National College. With a passion for technology and innovation, I have developed
           expertise in full-stack development using modern frameworks and technologies.
         </p>
         <p
           class="mb-4"
-          [ngClass]="{
-            'text-light': darkMode,
-            'text-muted': !darkMode
-          }"
-        >
+          [class.text-light]="darkMode"
+          [class.text-muted]="!darkMode">
           My journey in software development has led me to work with various technologies including
           Angular for frontend development, Spring Boot for backend services, and PostgreSQL for
           database management. I enjoy solving complex problems and creating user-friendly applications
@@ -50,11 +42,8 @@
         </p>
         <p
           class="mb-4"
-          [ngClass]="{
-            'text-light': darkMode,
-            'text-muted': !darkMode
-          }"
-        >
+          [class.text-light]="darkMode"
+          [class.text-muted]="!darkMode">
           Beyond coding, I actively participate in hackathons and technical competitions, where I've
           achieved notable recognition including first place in recent hackathons. I believe in
           continuous learning and staying updated with the latest technological trends.
@@ -64,26 +53,23 @@
           <div *ngFor="let stat of stats" class="col-6 col-md-3">
             <div class="text-center">
               <div
-                class="rounded-circle d-inline-flex align-items-center justify-content-center mb-2 bg-primary"
+                class="rounded-circle d-inline-flex align-items-center justify-content-center mb-2"
+                [class.bg-primary]="darkMode"
+                [class.bg-primary]="!darkMode"
                 [class.bg-opacity-10]="!darkMode"
-                style="width: 60px; height: 60px;"
-              >
-                <i
-                  [ngClass]="getFontAwesomeIcon(stat.icon)"
-                  class="fa-fw"
+                style="width: 60px; height: 60px;">
+                <fa-icon
+                  [icon]="stat.icon"
+                  size="lg"
                   [class.text-white]="darkMode"
-                  [class.text-primary]="!darkMode"
-                  aria-hidden="true"
-                ></i>
+                  [class.text-primary]="!darkMode">
+                </fa-icon>
               </div>
               <h4 class="text-primary fw-bold">{{ stat.number }}</h4>
               <p
                 class="small"
-                [ngClass]="{
-                  'text-light': darkMode,
-                  'text-muted': !darkMode
-                }"
-              >
+                [class.text-light]="darkMode"
+                [class.text-muted]="!darkMode">
                 {{ stat.label }}
               </p>
             </div>

@@ -1,0 +1,186 @@
+<section
+  id="skills"
+  class="py-5"
+  [class.bg-dark]="darkMode"
+  [class.text-white]="darkMode"
+  [class.bg-light]="!darkMode"
+  style="scroll-margin-top: 80px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center mb-5">
+          My <span class="text-primary">Skills</span> & <span class="text-primary">Achievements</span>
+        </h2>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-auto">
+        <div class="btn-group" role="group">
+          <button
+            class="btn"
+            [class.btn-primary]="activeTab === 'skills'"
+            [class.btn-outline-light]="darkMode && activeTab !== 'skills'"
+            [class.btn-outline-primary]="!darkMode && activeTab !== 'skills'"
+            (click)="activeTab = 'skills'">
+            <fa-icon [icon]="faCode" class="me-2"></fa-icon>
+            Technical Skills
+          </button>
+          <button
+            class="btn"
+            [class.btn-primary]="activeTab === 'achievements'"
+            [class.btn-outline-light]="darkMode && activeTab !== 'achievements'"
+            [class.btn-outline-primary]="!darkMode && activeTab !== 'achievements'"
+            (click)="activeTab = 'achievements'">
+            <fa-icon [icon]="faAward" class="me-2"></fa-icon>
+            Achievements
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Tab -->
+    <div *ngIf="activeTab === 'skills'">
+      <!-- Category Filter -->
+      <div class="row justify-content-center mb-4">
+        <div class="col-auto">
+          <div class="btn-group flex-wrap" role="group">
+            <button
+              *ngFor="let category of categories"
+              class="btn btn-sm"
+              [class.btn-primary]="selectedCategory === category"
+              [class.btn-outline-light]="darkMode && selectedCategory !== category"
+              [class.btn-outline-primary]="!darkMode && selectedCategory !== category"
+              (click)="selectedCategory = category">
+              {{ category }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Grid -->
+      <div class="row g-4">
+        <div *ngFor="let skill of filteredSkills" class="col-lg-6 col-xl-4">
+          <div
+            class="card h-100 shadow-sm hover-shadow"
+            [class.bg-secondary]="darkMode"
+            [class.border-dark]="darkMode"
+            [class.bg-white]="!darkMode">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <div class="fs-2 me-3">{{ skill.icon }}</div>
+                <div>
+                  <h5
+                    class="card-title mb-1"
+                    [class.text-white]="darkMode"
+                    [class.text-dark]="!darkMode">
+                    {{ skill.name }}
+                  </h5>
+                  <small
+                    [class.text-light]="darkMode"
+                    [class.text-muted]="!darkMode">
+                    {{ skill.category }}
+                  </small>
+                </div>
+              </div>
+              <div class="progress mb-2" style="height: 8px;">
+                <div
+                  class="progress-bar bg-primary"
+                  role="progressbar"
+                  [style.width.%]="skill.level">
+                </div>
+              </div>
+              <small
+                [class.text-light]="darkMode"
+                [class.text-muted]="!darkMode">
+                {{ skill.level }}% Proficiency
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievements Tab -->
+    <div *ngIf="activeTab === 'achievements'" class="row g-4">
+      <div *ngFor="let achievement of achievements" class="col-lg-6">
+        <div
+          class="card shadow-sm hover-shadow"
+          [class.bg-secondary]="darkMode"
+          [class.border-dark]="darkMode"
+          [class.bg-white]="!darkMode">
+          <img
+            [src]="achievement.image"
+            class="card-img-top"
+            [alt]="achievement.title"
+            style="height: 200px; object-fit: cover;" />
+          <div class="card-body">
+            <h5
+              class="card-title"
+              [class.text-white]="darkMode"
+              [class.text-dark]="!darkMode">
+              {{ achievement.title }}
+            </h5>
+            <p
+              class="card-text"
+              [class.text-light]="darkMode"
+              [class.text-muted]="!darkMode">
+              {{ achievement.description }}
+            </p>
+            <p class="text-primary small mb-3">{{ achievement.date }}</p>
+            <button
+              class="btn btn-primary"
+              (click)="selectedAchievement = achievement"
+              data-bs-toggle="modal"
+              data-bs-target="#achievementModal">
+              <fa-icon [icon]="faExternalLink" class="me-1"></fa-icon>
+              View Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievement Modal -->
+    <div class="modal fade" id="achievementModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div
+          class="modal-content"
+          [class.bg-dark]="darkMode"
+          [class.text-white]="darkMode">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ selectedAchievement?.title }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" *ngIf="selectedAchievement">
+            <img
+              [src]="selectedAchievement.image"
+              class="img-fluid rounded mb-3"
+              [alt]="selectedAchievement.title" />
+            <p
+              class="mb-3"
+              [class.text-light]="darkMode"
+              [class.text-muted]="!darkMode">
+              {{ selectedAchievement.details }}
+            </p>
+            <div class="mb-3">
+              <h6>Technologies Used:</h6>
+              <div class="d-flex flex-wrap gap-2">
+                    <span *ngFor="let tech of selectedAchievement.technologies" class="badge bg-primary">
+                      {{ tech }}
+                    </span>
+              </div>
+            </div>
+            <p class="text-primary">
+              <strong>Date: {{ selectedAchievement.date }}</strong>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

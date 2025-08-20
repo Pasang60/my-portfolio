@@ -16,7 +16,7 @@
             class="h4 mb-4"
             [class.text-light]="darkMode"
             [class.text-muted]="!darkMode">
-            Full Stack Developer & BCA Student
+            Backend Developer & BCA Student
           </h2>
           <div class="d-flex align-items-center justify-content-center justify-content-lg-start mb-4">
             <fa-icon [icon]="faMapMarkerAlt" class="text-primary me-2"></fa-icon>
@@ -42,13 +42,18 @@
             </a>
           </div>
           <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
-            <button class="btn btn-primary btn-lg px-4">
-              View My Work
-            </button>
+              <a
+                href="assets/documents/sherpaCV.pdf"
+                class="btn btn-primary btn-lg px-4"
+                target="_blank"
+                rel="noopener noreferrer">
+                View CV
+              </a>
             <button
               class="btn btn-lg px-4"
               [class.btn-outline-light]="darkMode"
-              [class.btn-outline-primary]="!darkMode">
+              [class.btn-outline-primary]="!darkMode"
+            (click)="navigateToContact()">
               Contact Me
             </button>
           </div>
@@ -58,10 +63,11 @@
         <div class="text-center">
           <div class="position-relative d-inline-block">
             <img
-              src="https://images.pexels.com/photos/3778876/pexels-photo-3778876.jpeg?auto=compress&cs=tinysrgb&w=400"
+              ngSrc="assets/images/photo.png"
               alt="Pasang Gelbu Sherpa"
               class="img-fluid rounded-circle shadow-lg hero-image"
-              style="width: 100%; max-width: 350px; height: auto; aspect-ratio: 1/1; object-fit: cover; min-width: 250px;" />
+              style="width: 100%; max-width: 350px; height: auto; aspect-ratio: 1/1; object-fit: cover; min-width: 250px;"
+              height="1074" width="868"/>
             <div
               class="position-absolute top-0 start-0 w-100 h-100 rounded-circle border border-3 border-primary"
               style="animation: pulse 2s infinite;">

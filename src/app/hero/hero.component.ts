@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
@@ -12,12 +12,13 @@ interface SocialLink {
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, NgOptimizedImage],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })
 export class HeroComponent {
   @Input() darkMode = false;
+  @Output() navigateToSection = new EventEmitter<string>();
 
   // Font Awesome icons
   faGithub = faGithub;
@@ -30,4 +31,8 @@ export class HeroComponent {
     { icon: this.faLinkedin, href: '#', label: 'LinkedIn' },
     { icon: this.faEnvelope, href: '#contact', label: 'Email' }
   ];
+
+  navigateToContact() {
+    this.navigateToSection.emit('contact');
+  }
 }

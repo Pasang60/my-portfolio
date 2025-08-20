@@ -1,15 +1,27 @@
 <div class="App" [class.bg-dark]="darkMode" [class.bg-white]="!darkMode">
   <app-header
     [darkMode]="darkMode"
-    (toggleDarkMode)="toggleDarkMode()">
+    [currentView]="currentView"
+    (toggleDarkMode)="toggleDarkMode()"
+    (navigateToSection)="handleNavigateToSection($event)">
   </app-header>
 
   <main *ngIf="currentView === 'portfolio'">
-    <app-hero [darkMode]="darkMode"></app-hero>
+    <app-hero [darkMode]="darkMode" (navigateToSection)="handleNavigateToSection($event)"></app-hero>
     <app-about [darkMode]="darkMode"></app-about>
     <app-skills [darkMode]="darkMode"></app-skills>
     <app-projects [darkMode]="darkMode" (readMore)="handleProjectReadMore($event)"></app-projects>
-
+    <app-teams [darkMode]="darkMode"></app-teams>
+    <app-blogs [darkMode]="darkMode" (readMore)="handleBlogReadMore($event)"></app-blogs>
+    <app-contact [darkMode]="darkMode"></app-contact>
   </main>
 
+  <app-blog-detail
+    *ngIf="currentView === 'blog-detail'"
+    [article]="selectedBlogArticle"
+    [darkMode]="darkMode"
+    (back)="handleBackToBlog()">
+  </app-blog-detail>
+
+  <app-footer [darkMode]="darkMode"></app-footer>
 </div>

@@ -1,0 +1,254 @@
+<section
+  id="contact"
+  class="py-5"
+  [class.bg-dark]="darkMode"
+  [class.text-white]="darkMode"
+  [class.bg-light]="!darkMode"
+  style="scroll-margin-top: 80px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center mb-5">
+          Get In <span class="text-primary">Touch</span>
+        </h2>
+        <p
+          class="text-center mb-5"
+          [class.text-light]="darkMode"
+          [class.text-muted]="!darkMode">
+          Have a project in mind or just want to chat about technology? I'd love to hear from you!
+        </p>
+      </div>
+    </div>
+    <div class="row g-5">
+      <!-- Contact Information -->
+      <div class="col-lg-4">
+        <div class="mb-5">
+          <h4
+            class="mb-4"
+            [class.text-white]="darkMode"
+            [class.text-dark]="!darkMode">
+            Contact Information
+          </h4>
+          <div *ngFor="let info of contactInfo" class="d-flex align-items-center mb-4">
+            <div
+              class="rounded-circle d-flex align-items-center justify-content-center me-3"
+              [class.bg-primary]="darkMode"
+              [class.bg-primary]="!darkMode"
+              [class.bg-opacity-10]="!darkMode"
+              style="width: 50px; height: 50px;">
+              <fa-icon
+                [icon]="faIcons"
+                size="1x"
+                [class.text-white]="darkMode"
+                [class.text-primary]="!darkMode">
+              </fa-icon>
+            </div>
+            <div>
+              <h6
+                class="mb-1"
+                [class.text-white]="darkMode"
+                [class.text-dark]="!darkMode">
+                {{ info.title }}
+              </h6>
+              <a
+                [href]="info.link"
+                class="text-decoration-none"
+                [class.text-light]="darkMode"
+                [class.text-muted]="!darkMode">
+                {{ info.value }}
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <h5
+            class="mb-3"
+            [class.text-white]="darkMode"
+            [class.text-dark]="!darkMode">
+            Quick Links
+          </h5>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a
+                href="#home"
+                class="text-decoration-none"
+                [class.text-light]="darkMode"
+                [class.text-muted]="!darkMode">
+                Home
+              </a>
+            </li>
+            <li class="mb-2">
+              <a
+                href="#about"
+                class="text-decoration-none"
+                [class.text-light]="darkMode"
+                [class.text-muted]="!darkMode">
+                About Me
+              </a>
+            </li>
+            <li class="mb-2">
+              <a
+                href="#projects"
+                class="text-decoration-none"
+                [class.text-light]="darkMode"
+                [class.text-muted]="!darkMode">
+                My Projects
+              </a>
+            </li>
+            <li class="mb-2">
+              <a
+                href="#blog"
+                class="text-decoration-none"
+                [class.text-light]="darkMode"
+                [class.text-muted]="!darkMode">
+                Blog Posts
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Contact Form -->
+      <div class="col-lg-8">
+        <div
+          class="card shadow-sm"
+          [class.bg-secondary]="darkMode"
+          [class.border-dark]="darkMode"
+          [class.bg-white]="!darkMode">
+          <div class="card-body">
+            <div *ngIf="isSubmitted" class="text-center py-5">
+              <fa-icon [icon]="faCheckCircle" size="3x" class="text-success mb-3"></fa-icon>
+              <h4
+                class="mb-3"
+                [class.text-white]="darkMode"
+                [class.text-dark]="!darkMode">
+                Message Sent Successfully!
+              </h4>
+              <p
+                [class.text-light]="darkMode"
+                [class.text-muted]="!darkMode">
+                Thank you for reaching out! I'll get back to you within 24 hours.
+              </p>
+            </div>
+            <form *ngIf="!isSubmitted" (ngSubmit)="handleSubmit()" #contactForm="ngForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label
+                    for="name"
+                    class="form-label"
+                    [class.text-light]="darkMode"
+                    [class.text-dark]="!darkMode">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-control"
+                    [class.bg-dark]="darkMode"
+                    [class.text-white]="darkMode"
+                    [class.border-secondary]="darkMode"
+                    [(ngModel)]="formData.name"
+                    required
+                    placeholder="Your full name" />
+                </div>
+                <div class="col-md-6">
+                  <label
+                    for="email"
+                    class="form-label"
+                    [class.text-light]="darkMode"
+                    [class.text-dark]="!darkMode">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    [class.bg-dark]="darkMode"
+                    [class.text-white]="darkMode"
+                    [class.border-secondary]="darkMode"
+                    [(ngModel)]="formData.email"
+                    required
+                    placeholder="your.email@example.com" />
+                </div>
+                <div class="col-12">
+                  <label
+                    for="subject"
+                    class="form-label"
+                    [class.text-light]="darkMode"
+                    [class.text-dark]="!darkMode">
+                    Subject *
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    class="form-control"
+                    [class.bg-dark]="darkMode"
+                    [class.text-white]="darkMode"
+                    [class.border-secondary]="darkMode"
+                    [(ngModel)]="formData.subject"
+                    required
+                    placeholder="What's this about?" />
+                </div>
+                <div class="col-12">
+                  <label
+                    for="message"
+                    class="form-label"
+                    [class.text-light]="darkMode"
+                    [class.text-dark]="!darkMode">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    class="form-control"
+                    [class.bg-dark]="darkMode"
+                    [class.text-white]="darkMode"
+                    [class.border-secondary]="darkMode"
+                    [(ngModel)]="formData.message"
+                    required
+                    placeholder="Tell me about your project or just say hi!">
+                      </textarea>
+                </div>
+                <div class="col-12">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-lg px-4"
+                    [disabled]="isSubmitting">
+                    <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status"></span>
+                    <fa-icon *ngIf="!isSubmitting" [icon]="faPaperPlane" size="1x" class="me-2"></fa-icon>
+                    {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Additional Information -->
+        <div
+          class="mt-4 p-4 rounded shadow-sm"
+          [class.bg-secondary]="darkMode"
+          [class.bg-white]="!darkMode">
+          <h5
+            class="mb-3"
+            [class.text-white]="darkMode"
+            [class.text-dark]="!darkMode">
+            What to expect?
+          </h5>
+          <ul
+            class="list-unstyled"
+            [class.text-light]="darkMode"
+            [class.text-muted]="!darkMode">
+            <li class="mb-2">✅ Response within 24 hours</li>
+            <li class="mb-2">✅ Detailed discussion about your project</li>
+            <li class="mb-2">✅ Free consultation and project estimation</li>
+            <li class="mb-2">✅ Professional and friendly communication</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

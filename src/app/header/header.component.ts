@@ -18,7 +18,9 @@ interface NavItem {
 })
 export class HeaderComponent implements OnInit {
   @Input() darkMode = false;
+  @Input() currentView = 'portfolio';
   @Output() toggleDarkMode = new EventEmitter<void>();
+  @Output() navigateToSection = new EventEmitter<string>();
 
   // Font Awesome icons
   faDownload = faDownload;
@@ -65,11 +67,20 @@ export class HeaderComponent implements OnInit {
   }
 
   scrollToSection(sectionId: string) {
+    // If we're in blog detail view, emit navigation event to parent
+    if (this.currentView === 'blog-detail') {
+      this.navigateToSection.emit(sectionId);
+    } else {
+      this.performScroll(sectionId);
+    }
+    this.isMenuOpen = false;
+  }
+
+  private performScroll(sectionId: string) {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-    this.isMenuOpen = false;
   }
 
   downloadCV() {

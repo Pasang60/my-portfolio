@@ -1,3 +1,109 @@
+<!--<header-->
+<!--  class="fixed-top transition-all duration-300"-->
+<!--  [class.shadow-lg]="isScrolled"-->
+<!--  [class.bg-dark]="darkMode"-->
+<!--  [class.bg-white]="!darkMode"-->
+<!--  style="z-index: 1030;">-->
+<!--  <nav class="container">-->
+<!--    <div class="d-flex justify-content-between align-items-center py-3">-->
+<!--      <div-->
+<!--        class="fs-4 fw-bold"-->
+<!--        [class.text-white]="darkMode"-->
+<!--        [class.text-primary]="!darkMode">-->
+<!--        Pasang Gelbu Sherpa-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Desktop Menu &ndash;&gt;-->
+<!--      <div class="d-none d-lg-flex align-items-center">-->
+<!--        <ul class="nav me-4">-->
+<!--          <li *ngFor="let item of navItems" class="nav-item">-->
+<!--            <button-->
+<!--              class="nav-link btn btn-link text-decoration-none position-relative"-->
+<!--              [class.text-primary]="activeSection === item.id"-->
+<!--              [class.text-light]="darkMode && activeSection !== item.id"-->
+<!--              [class.text-dark]="!darkMode && activeSection !== item.id"-->
+<!--              (click)="scrollToSection(item.id)">-->
+<!--              {{ item.label }}-->
+<!--              <div-->
+<!--                *ngIf="activeSection === item.id"-->
+<!--                class="position-absolute bottom-0 start-50 translate-middle-x bg-primary"-->
+<!--                style="width: 100%; height: 2px;">-->
+<!--              </div>-->
+<!--            </button>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--        <div class="d-flex align-items-center gap-2">-->
+<!--          <button-->
+<!--            class="btn btn-sm me-2"-->
+<!--            [class.btn-outline-light]="darkMode"-->
+<!--            [class.btn-outline-primary]="!darkMode"-->
+<!--            (click)="downloadCV()">-->
+<!--            <fa-icon [icon]="faDownload" class="me-1"></fa-icon>-->
+<!--            Download CV-->
+<!--          </button>-->
+<!--          <button-->
+<!--            class="btn btn-sm"-->
+<!--            [class.btn-outline-light]="darkMode"-->
+<!--            [class.btn-outline-primary]="!darkMode"-->
+<!--            (click)="toggleDarkMode.emit()">-->
+<!--            <fa-icon [icon]="darkMode ? faSun : faMoon"></fa-icon>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Mobile Menu Toggle &ndash;&gt;-->
+<!--      <div class="d-lg-none d-flex align-items-center gap-2">-->
+<!--        <button-->
+<!--          class="btn btn-sm me-2"-->
+<!--          [class.btn-outline-light]="darkMode"-->
+<!--          [class.btn-outline-primary]="!darkMode"-->
+<!--          (click)="toggleDarkMode.emit()">-->
+<!--          <fa-icon [icon]="darkMode ? faSun : faMoon"></fa-icon>-->
+<!--        </button>-->
+<!--        <button-->
+<!--          class="btn"-->
+<!--          [class.btn-outline-light]="darkMode"-->
+<!--          [class.btn-outline-primary]="!darkMode"-->
+<!--          (click)="isMenuOpen = !isMenuOpen">-->
+<!--          <fa-icon [icon]="isMenuOpen ? faTimes : faBars"></fa-icon>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Mobile Menu &ndash;&gt;-->
+<!--    <div-->
+<!--      *ngIf="isMenuOpen"-->
+<!--      class="d-lg-none py-3"-->
+<!--      [class.bg-dark]="darkMode"-->
+<!--      [class.border-top]="true"-->
+<!--      [class.border-secondary]="darkMode"-->
+<!--      [class.bg-light]="!darkMode">-->
+<!--      <ul class="nav flex-column">-->
+<!--        <li *ngFor="let item of navItems" class="nav-item">-->
+<!--          <button-->
+<!--            class="nav-link btn btn-link text-start text-decoration-none w-100"-->
+<!--            [class.text-primary]="activeSection === item.id"-->
+<!--            [class.fw-bold]="activeSection === item.id"-->
+<!--            [class.text-light]="darkMode && activeSection !== item.id"-->
+<!--            [class.text-dark]="!darkMode && activeSection !== item.id"-->
+<!--            (click)="scrollToSection(item.id)">-->
+<!--            {{ item.label }}-->
+<!--          </button>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--      <button-->
+<!--        class="btn btn-sm mt-3"-->
+<!--        [class.btn-outline-light]="darkMode"-->
+<!--        [class.btn-outline-primary]="!darkMode"-->
+<!--        (click)="downloadCV()">-->
+<!--        <fa-icon [icon]="faDownload" class="me-1"></fa-icon>-->
+<!--        Download CV-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </nav>-->
+<!--</header>-->
+
+
 <header
   class="fixed-top transition-all duration-300"
   [class.shadow-lg]="isScrolled"

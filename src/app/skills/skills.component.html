@@ -6,13 +6,6 @@
   [class.bg-light]="!darkMode"
   style="scroll-margin-top: 80px;">
   <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h2 class="text-center mb-5">
-          My <span class="text-primary">Skills</span> & <span class="text-primary">Achievements</span>
-        </h2>
-      </div>
-    </div>
 
     <!-- Tab Navigation -->
     <div class="row justify-content-center mb-5">
@@ -84,18 +77,10 @@
                   </small>
                 </div>
               </div>
-<!--              <div class="progress mb-2" style="height: 8px;">-->
-<!--                <div-->
-<!--                  class="progress-bar bg-primary"-->
-<!--                  role="progressbar"-->
-<!--                  [style.width.%]="skill.level">-->
-<!--                </div>-->
-<!--              </div>-->
               <small
                 [class.text-light]="darkMode"
                 [class.text-muted]="!darkMode">
                 {{ skill.level }} ({{ skill.experience }})
-<!--                {{ skill.level }}% Proficiency-->
               </small>
             </div>
           </div>

@@ -7,10 +7,12 @@ import {
   faPaperPlane,
   faEnvelope,
   faPhone,
-  faMapMarkerAlt,
-  faIcons
+  faMapPin
+
+
 } from '@fortawesome/free-solid-svg-icons';
 import emailjs from 'emailjs-com';
+import {IconProp} from '@fortawesome/fontawesome-svg-core';
 
 interface ContactInfo {
   icon: string;
@@ -61,16 +63,12 @@ export class ContactComponent {
     },
   ];
 
-  // Icon mapping
-  contactIcons = {
-    mail: faEnvelope,
-    phone: faPhone,
-    'map-pin': faMapMarkerAlt,
-  };
 
+  faEnvelope = faEnvelope;
+  faPhone = faPhone;
+  faMapPin = faMapPin;
   faPaperPlane = faPaperPlane;
   faCheckCircle = faCheckCircle;
-  faIcons = faIcons;
 
   async handleSubmit() {
     this.isSubmitting = true;
@@ -107,6 +105,19 @@ export class ContactComponent {
       console.error('Error sending email:', error);
     } finally {
       this.isSubmitting = false;
+    }
+  }
+
+  getIcon(iconName: string): IconProp {
+    switch (iconName) {
+      case 'mail':
+        return this.faEnvelope;
+      case 'phone':
+        return this.faPhone;
+      case 'map-pin':
+        return this.faMapPin;
+      default:
+        return this.faEnvelope; // Default fallback
     }
   }
 }

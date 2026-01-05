@@ -1,15 +1,15 @@
 <footer
   class="pt-5"
-  [class.bg-secondary]="darkMode"
+  [class.bg-dark]="darkMode"
+  [class.bg-white]="!darkMode"
   [class.text-white]="darkMode"
-  [class.bg-dark]="!darkMode"
-  [class.text-white]="!darkMode">
+  [class.text-dark]="!darkMode">
   <div class="container">
     <div class="row g-4">
       <!-- Brand and Description -->
       <div class="col-lg-4 col-md-6">
         <h5 class="text-primary mb-3">Pasang Gelbu Sherpa</h5>
-        <p class="text-light mb-4">
+        <p [class.text-light]="darkMode" [class.text-muted]="!darkMode" class="mb-4">
           Full Stack Developer and BCA student passionate about creating innovative web solutions
           with modern technologies. Always eager to learn and take on new challenges.
         </p>
@@ -17,7 +17,9 @@
           <a
             *ngFor="let social of socialLinks"
             [href]="social.href"
-            class="text-light hover-text-primary transition-colors"
+            [class.text-light]="darkMode"
+            [class.text-dark]="!darkMode"
+            class="hover-text-primary transition-colors"
             [title]="social.label"
             style="text-decoration: none;">
             <fa-icon [icon]="faHeart" size="1x"></fa-icon>
@@ -32,7 +34,9 @@
           <li *ngFor="let link of quickLinks" class="mb-2">
             <a
               [href]="link.href"
-              class="text-light text-decoration-none hover-text-primary"
+              [class.text-light]="darkMode"
+              [class.text-dark]="!darkMode"
+              class="text-decoration-none hover-text-primary"
               style="font-size: 0.9rem;">
               {{ link.name }}
             </a>
@@ -47,7 +51,9 @@
           <li *ngFor="let resource of resources" class="mb-2">
             <a
               [href]="resource.href"
-              class="text-light text-decoration-none hover-text-primary d-flex align-items-center"
+              [class.text-light]="darkMode"
+              [class.text-dark]="!darkMode"
+              class="text-decoration-none hover-text-primary d-flex align-items-center"
               style="font-size: 0.9rem;">
               {{ resource.name }}
               <fa-icon
@@ -65,36 +71,40 @@
       <div class="col-lg-4 col-md-6">
         <h6 class="text-primary mb-3">Get in Touch</h6>
         <div class="mb-2">
-          <small class="text-light">
+          <small [class.text-light]="darkMode" [class.text-muted]="!darkMode">
             📧 email
           </small>
         </div>
         <div class="mb-2">
-          <small class="text-light">
+          <small [class.text-light]="darkMode" [class.text-muted]="!darkMode">
             📱 +977 98XXXXXXXX
           </small>
         </div>
         <div class="mb-3">
-          <small class="text-light">
+          <small [class.text-light]="darkMode" [class.text-muted]="!darkMode">
             📍 Kathmandu, Nepal
           </small>
         </div>
         <div class="mb-2">
-          <small class="text-light">
+          <small [class.text-light]="darkMode" [class.text-muted]="!darkMode">
             🎓 Aadim National College
           </small>
         </div>
       </div>
     </div>
 
+
     <!-- Skills Tags -->
     <div
       class="row mt-4 pt-4"
       [class.border-top]="true"
-      [class.border-secondary]="true">
+      [class.border-secondary]="darkMode"
+      [class.border-light]="!darkMode">
       <div class="col-12">
         <div class="text-center mb-3">
-          <small class="text-light fw-semibold">Technologies I Work With</small>
+          <small [class.text-light]="darkMode" [class.text-muted]="!darkMode" class="fw-semibold">
+            Technologies I Work With
+          </small>
         </div>
         <div class="d-flex flex-wrap justify-content-center gap-2">
               <span
@@ -116,10 +126,10 @@
           [class.border-light]="!darkMode"
           [class.border-opacity-25]="true">
           <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-            <p class="mb-2 mb-md-0 text-light">
+            <p [class.text-light]="darkMode" [class.text-muted]="!darkMode" class="mb-2 mb-md-0">
               © {{ currentYear }} Pasang Gelbu Sherpa. All rights reserved.
             </p>
-            <p class="mb-0 text-light d-flex align-items-center">
+            <p [class.text-light]="darkMode" [class.text-muted]="!darkMode" class="mb-0 d-flex align-items-center">
               Made with
               <fa-icon [icon]="faHeart" size="1x" class="text-primary mx-1" [styles]="{ 'fill': 'currentColor' }"></fa-icon>
               for sharing knowledge

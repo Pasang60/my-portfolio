@@ -8,124 +8,90 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h2 class="text-center mb-5">
-          Team <span class="text-primary"><Strong>BROGRAMMERS</Strong></span>
+        <h2 class="text-center mb-3">
+          # Team <span class="text-primary">Brogrammers</span>
         </h2>
-        <p
-          class="text-center mb-5"
-          [class.text-light]="darkMode"
-          [class.text-muted]="!darkMode">
-          Meet the talented individuals who collaborate on various projects and contribute to our success.
-        </p>
       </div>
     </div>
-    <div class="row g-4">
-      <div *ngFor="let member of teamMembers" class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-        <div
-          class="card h-100 shadow-sm team-card"
-          [class.bg-secondary]="darkMode"
-          [class.border-dark]="darkMode"
-          [class.bg-white]="!darkMode">
-          <div class="position-relative overflow-hidden">
+
+    <!-- Team Members Grid -->
+    <div class="row justify-content-center g-4 mb-5">
+      <div *ngFor="let member of teamMembers" class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+        <div class="text-center team-member-card">
+          <!-- Profile Image with Circle Border -->
+          <div class="position-relative d-inline-block mb-3">
             <img
               [src]="member.image"
-              class="card-img-top"
               [alt]="member.name"
-              style="height: 300px; object-fit: cover;" />
-            <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary bg-opacity-75 d-flex align-items-center justify-content-center opacity-0 team-overlay">
-              <div class="text-center text-white">
-                <h6 class="mb-2">{{ member.name }}</h6>
-                <p class="small mb-3">{{ member.bio }}</p>
-                <div class="d-flex justify-content-center gap-2">
-                  <a [href]="member.github" class="btn btn-outline-light btn-sm">
-                    <fa-icon [icon]="faGithub" size="1x"></fa-icon>
-                  </a>
-                  <a [href]="member.linkedin" class="btn btn-outline-light btn-sm">
-                    <fa-icon [icon]="faLinkedin" size="1x"></fa-icon>
-                  </a>
-                  <a [href]="'mailto:' + member.email" class="btn btn-outline-light btn-sm">
-                    <fa-icon [icon]="faEnvelope" size="1x"></fa-icon>
-                  </a>
-                </div>
-              </div>
-            </div>
+              class="rounded-circle border border-3 border-white"
+              style="width: 150px; height: 150px; object-fit: cover;" />
+
+            <!-- Online Status Indicator -->
+            <span
+              class="position-absolute bottom-0 end-0 translate-middle p-2 bg-success border border-2 border-white rounded-circle"
+              style="width: 20px; height: 20px;">
+            </span>
           </div>
-          <div class="card-body">
-            <h5
-              class="card-title"
-              [class.text-white]="darkMode"
-              [class.text-dark]="!darkMode">
-              {{ member.name }}
-            </h5>
-            <p class="text-primary fw-semibold">{{ member.role }}</p>
-            <p
-              class="card-text small"
+
+          <!-- Member Name -->
+          <h5
+            class="mb-1"
+            [class.text-primary]="darkMode"
+            [class.text-primary]="!darkMode">
+            {{ member.name }}
+          </h5>
+
+          <!-- Member Role -->
+          <p
+            class="small mb-2"
+            [class.text-light]="darkMode"
+            [class.text-muted]="!darkMode">
+            {{ member.role }}
+          </p>
+
+          <!-- Social Media Icons - Hidden by default, shown on hover -->
+          <div class="social-icons-container d-flex justify-content-center gap-3 mt-2">
+            <a
+              [href]="member.github"
+              target="_blank"
+              class="social-icon"
               [class.text-light]="darkMode"
-              [class.text-muted]="!darkMode">
-              {{ member.experience }} experience
-            </p>
-            <!-- Skills -->
-            <div class="mb-3">
-              <div class="d-flex flex-wrap gap-1">
-                    <span *ngFor="let skill of member.skills.slice(0, 3)" class="badge bg-primary small">
-                      {{ skill }}
-                    </span>
-                <span *ngIf="member.skills.length > 3" class="badge bg-secondary small">
-                      +{{ member.skills.length - 3 }} more
-                    </span>
-              </div>
-            </div>
-            <!-- Projects -->
-            <div class="mb-3">
-              <small
-                class="fw-semibold"
-                [class.text-light]="darkMode"
-                [class.text-muted]="!darkMode">
-                Recent Projects:
-              </small>
-              <div class="small">
-                {{ member.projects.join(', ') }}
-              </div>
-            </div>
-            <!-- Achievements -->
-            <div class="mb-3">
-              <small
-                class="fw-semibold"
-                [class.text-light]="darkMode"
-                [class.text-muted]="!darkMode">
-                Achievements:
-              </small>
-              <ul class="list-unstyled small">
-                <li *ngFor="let achievement of member.achievements">• {{ achievement }}</li>
-              </ul>
-            </div>
-            <!-- Contact Links -->
-            <div class="d-flex justify-content-center gap-2">
-              <a
-                [href]="member.github"
-                class="btn btn-sm"
-                [class.btn-outline-light]="darkMode"
-                [class.btn-outline-primary]="!darkMode">
-                <fa-icon [icon]="faGithub" size="1x"></fa-icon>
-              </a>
-              <a
-                [href]="member.linkedin"
-                class="btn btn-sm"
-                [class.btn-outline-light]="darkMode"
-                [class.btn-outline-primary]="!darkMode">
-                <fa-icon [icon]="faLinkedin" size="1x"></fa-icon>
-              </a>
-              <a
-                [href]="'mailto:' + member.email"
-                class="btn btn-sm"
-                [class.btn-outline-light]="darkMode"
-                [class.btn-outline-primary]="!darkMode">
-                <fa-icon [icon]="faEnvelope" size="1x"></fa-icon>
-              </a>
-            </div>
+              [class.text-dark]="!darkMode">
+              <fa-icon [icon]="faGithub" size="lg"></fa-icon>
+            </a>
+            <a
+              [href]="member.linkedin"
+              target="_blank"
+              class="social-icon"
+              [class.text-light]="darkMode"
+              [class.text-dark]="!darkMode">
+              <fa-icon [icon]="faLinkedin" size="lg"></fa-icon>
+            </a>
+            <a
+              [href]="'mailto:' + member.email"
+              class="social-icon"
+              [class.text-light]="darkMode"
+              [class.text-dark]="!darkMode">
+              <fa-icon [icon]="faGlobe" size="lg"></fa-icon>
+            </a>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Team Description -->
+    <div class="row">
+      <div class="col-12">
+        <p
+          class="text-center mx-auto"
+          style="max-width: 800px;"
+          [class.text-light]="darkMode"
+          [class.text-muted]="!darkMode">
+          A collaborative team of four developers working together on innovative projects, combining individual expertise to deliver exceptional solutions in both competitive and commercial environments.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
+
+

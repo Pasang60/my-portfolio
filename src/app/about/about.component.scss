@@ -1,0 +1,151 @@
+.laptop-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.laptop {
+  position: relative;
+  width: 100%;
+  padding-top: 62.5%; /* 16:10 aspect ratio */
+  background: linear-gradient(to bottom, #2d2d2d 0%, #1a1a1a 100%);
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.screen {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  right: 5%;
+  bottom: 8%;
+  background: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.code-editor {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  color: #d4d4d4;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow: hidden;
+  font-family: 'Courier New', monospace;
+}
+
+.code-line {
+  opacity: 0;
+  animation: typeAndRepeat 6s infinite;
+}
+
+@keyframes typeAndRepeat {
+  0% {
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.code-line:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.code-line:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.code-line:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.code-line:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.code-line:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+.keyword {
+  color: #569cd6;
+  font-weight: bold;
+}
+
+.function {
+  color: #dcdcaa;
+}
+
+.string {
+  color: #ce9178;
+}
+
+.variable {
+  color: #9cdcfe;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 12px;
+  background: #fff;
+  animation: blink 1s infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.laptop-base {
+  width: 110%;
+  height: 20px;
+  background: linear-gradient(to bottom, #3a3a3a 0%, #2d2d2d 100%);
+  border-radius: 0 0 25px 25px;
+  margin: 0 -5%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.laptop-base::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 3px;
+  background: #1a1a1a;
+  border-radius: 2px;
+}

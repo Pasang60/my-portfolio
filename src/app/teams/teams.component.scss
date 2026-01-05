@@ -1,0 +1,30 @@
+
+.team-member-card {
+  transition: all 0.3s ease;
+}
+
+.social-icons-container {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+
+.team-member-card:hover .social-icons-container {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  height: auto;
+}
+
+.social-icon {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
+

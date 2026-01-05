@@ -1,21 +1,43 @@
 <section
   id="about"
   class="py-5"
-  [class.bg-secondary]="darkMode"
+  [class.bg-dark]="darkMode"
   [class.text-white]="darkMode"
-  [class.bg-white]="!darkMode"
+  [class.bg-light]="!darkMode"
   style="scroll-margin-top: 80px;">
   <div class="container">
-
     <div class="row align-items-center">
       <div class="col-lg-6 mb-4 mb-lg-0">
-        <img
-          src="https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt="About Pasang"
-          class="img-fluid rounded shadow-lg" />
+        <div class="animated-laptop-wrapper">
+          <div class="laptop-container">
+            <div class="laptop">
+              <div class="screen">
+                <div class="code-editor">
+                  <div class="code-line" style="animation-delay: 0s;">
+                    <span class="keyword">const</span> <span class="variable">name</span> = <span class="string">"Pasang Gelbu Sherpa"</span>;
+                  </div>
+                  <div class="code-line" style="animation-delay: 0.5s;">
+                    <span class="keyword">function</span> <span class="function">greet</span>()
+                    </div>
+                    <div class="code-line" style="animation-delay: 1s;">
+                    &nbsp;&nbsp;<span class="keyword">return</span> <span class="string">"Hello, World!"</span>;
+                  </div>
+                  <div class="code-line" style="animation-delay: 1.5s;">
+
+                  </div>
+                  <div class="code-line" style="animation-delay: 2s;">
+                    <span class="function">greet</span>();
+                  </div>
+                  <div class="cursor"></div>
+                </div>
+              </div>
+              <div class="laptop-base"></div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-lg-6">
-        <h3 class="mb-4">Full Stack Developer & Computer Science Student</h3>
+        <h3 class="mb-4">Backend Developer & Computer Science Student</h3>
         <p
           class="mb-4"
           [class.text-light]="darkMode"
@@ -47,7 +69,6 @@
             <div class="text-center">
               <div
                 class="rounded-circle d-inline-flex align-items-center justify-content-center mb-2"
-                [class.bg-primary]="darkMode"
                 [class.bg-primary]="!darkMode"
                 [class.bg-opacity-10]="!darkMode"
                 style="width: 60px; height: 60px;">

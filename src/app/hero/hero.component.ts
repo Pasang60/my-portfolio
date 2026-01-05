@@ -27,8 +27,8 @@ export class HeroComponent {
   faMapMarkerAlt = faMapMarkerAlt;
 
   socialLinks: SocialLink[] = [
-    { icon: this.faGithub, href: '#', label: 'GitHub' },
-    { icon: this.faLinkedin, href: '#', label: 'LinkedIn' },
+    { icon: this.faGithub, href: 'https://github.com/Pasang60', label: 'GitHub' },
+    { icon: this.faLinkedin, href: 'https://www.linkedin.com/in/pasang-sherpa-a55a93319/', label: 'LinkedIn' },
     { icon: this.faEnvelope, href: '#contact', label: 'Email' }
   ];
 

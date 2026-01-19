@@ -84,9 +84,8 @@ export class HeaderComponent implements OnInit {
   }
 
   downloadCV() {
-    // Create a mock PDF download
     const link = document.createElement('a');
-    link.href = '#'; // In a real app, this would be the path to your CV
+    link.href = 'assets/documents/pasangcv.pdf'; // Ensure the file path and name are correct
     link.download = 'Pasang_Gelbu_Sherpa_CV.pdf';
     link.click();
   }

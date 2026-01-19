@@ -54,8 +54,8 @@ export class BlogsComponent {
         <ul>
           <li><strong>Frontend (Angular):</strong> Handles user interface, routing, and client-side logic</li>
           <li><strong>Backend (Spring Boot):</strong> Manages business logic, data processing, and API endpoints</li>
-          <li><strong>Database:</strong> PostgreSQL, MySQL, or other relational databases</li>
-          <li><strong>Communication:</strong> RESTful APIs or GraphQL for data exchange</li>
+          <li><strong>Database:</strong> PostgreSQL, MySQL, or MongoDB</li>
+          <li><strong>Communication:</strong> RESTful APIs for data exchange</li>
         </ul>
 
         <h3>Best Practices</h3>
@@ -72,7 +72,7 @@ export class BlogsComponent {
         <h3>Conclusion</h3>
         <p>The Angular and Spring Boot combination provides a solid foundation for building modern web applications. With proper architecture and best practices, you can create applications that are not only functional but also maintainable and scalable for the long term.</p>
       `,
-      image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: 'assets/images/blog.png',
       author: 'Pasang Gelbu Sherpa',
       date: 'March 15, 2024',
       readTime: '8 min read',
@@ -80,206 +80,147 @@ export class BlogsComponent {
     },
     {
       id: 2,
-      title: 'Database Design Best Practices for Modern Applications',
-      excerpt: 'Explore essential database design principles and optimization techniques for building efficient and scalable database systems.',
+      title: 'Swagger Implementation and Its Usage Advantages in Spring Boot',
+      excerpt: 'Learn about Swagger, its implementation in Spring Boot, and the advantages it offers for API documentation and testing.',
       content: `
-        <h3>Introduction to Database Design</h3>
-        <p>Database design is the foundation of any successful application. A well-designed database ensures data integrity, optimal performance, and scalability as your application grows. In this comprehensive guide, we'll explore the essential principles and best practices for modern database design.</p>
+    <h3>Introduction to Swagger</h3>
+    <p>Swagger is an open-source framework for designing, building, documenting, and consuming RESTful APIs. It provides a user-friendly interface for developers to interact with APIs, making it easier to understand and test their functionality.</p>
 
-        <h3>Fundamental Design Principles</h3>
-        <p>Before diving into specific techniques, it's important to understand the core principles that guide effective database design:</p>
+    <h3>What is Swagger?</h3>
+    <p>Swagger simplifies API development by providing tools to describe the structure of APIs using the OpenAPI Specification (OAS). It generates interactive API documentation that allows developers to test endpoints directly from the browser.</p>
 
-        <h4>1. Normalization</h4>
-        <p>Normalization is the process of organizing data to minimize redundancy and dependency. The main normal forms include:</p>
-        <ul>
-          <li><strong>First Normal Form (1NF):</strong> Eliminate repeating groups and ensure atomic values</li>
-          <li><strong>Second Normal Form (2NF):</strong> Remove partial dependencies</li>
-          <li><strong>Third Normal Form (3NF):</strong> Eliminate transitive dependencies</li>
-        </ul>
+    <h3>How to Use Swagger in Spring Boot</h3>
+    <p>Integrating Swagger into a Spring Boot application involves the following steps:</p>
+    <ul>
+      <li>Add the required dependencies to your project.</li>
+      <li>Configure Swagger in your Spring Boot application.</li>
+      <li>Annotate your REST controllers to generate API documentation.</li>
+    </ul>
 
-        <h4>2. Data Integrity</h4>
-        <p>Maintain data accuracy and consistency through:</p>
-        <ul>
-          <li>Primary key constraints</li>
-          <li>Foreign key constraints</li>
-          <li>Check constraints</li>
-          <li>Unique constraints</li>
-          <li>Not null constraints</li>
-        </ul>
+    <h3>Dependencies Needed</h3>
+    <p>To use Swagger in a Spring Boot application, include the following dependencies in your \`pom.xml\` (for Maven) or \`build.gradle\` (for Gradle):</p>
 
-        <h3>Modern Database Technologies</h3>
-        <p>Today's applications can choose from various database technologies:</p>
+    <h4>Maven</h4>
+    <pre><code>
+    &lt;dependency&gt;
+      &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+      &lt;artifactId&gt;springfox-boot-starter&lt;/artifactId&gt;
+      &lt;version&gt;3.0.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    </code></pre>
 
-        <h4>Relational Databases</h4>
-        <ul>
-          <li><strong>PostgreSQL:</strong> Advanced features, strong ACID compliance</li>
-          <li><strong>MySQL:</strong> Wide adoption, good performance</li>
-          <li><strong>SQLite:</strong> Lightweight, embedded database</li>
-        </ul>
+    <h4>Gradle</h4>
+    <pre><code>
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    </code></pre>
 
-        <h4>NoSQL Databases</h4>
-        <ul>
-          <li><strong>MongoDB:</strong> Document-based, flexible schema</li>
-          <li><strong>Redis:</strong> In-memory, high-performance caching</li>
-          <li><strong>Elasticsearch:</strong> Full-text search and analytics</li>
-        </ul>
+    <h3>Configuring Swagger</h3>
+    <p>Create a configuration class to customize Swagger settings:</p>
+    <pre><code>
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+    import springfox.documentation.builders.PathSelectors;
+    import springfox.documentation.builders.RequestHandlerSelectors;
+    import springfox.documentation.spi.DocumentationType;
+    import springfox.documentation.spring.web.plugins.Docket;
 
-        <h3>Performance Optimization</h3>
-        <p>Optimizing database performance involves several strategies:</p>
+    @Configuration
+    public class SwaggerConfig {
+        @Bean
+        public Docket api() {
+            return new Docket(DocumentationType.OAS_30)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build();
+        }
+    }
+    </code></pre>
 
-        <h4>Indexing Strategies</h4>
-        <ul>
-          <li>Create indexes on frequently queried columns</li>
-          <li>Use composite indexes for multi-column queries</li>
-          <li>Monitor and maintain index usage</li>
-          <li>Avoid over-indexing to prevent write performance issues</li>
-        </ul>
+    <h3>Annotating REST Controllers</h3>
+    <p>Use Swagger annotations to document your API endpoints:</p>
+    <pre><code>
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RestController;
+    import io.swagger.annotations.ApiOperation;
 
-        <h4>Query Optimization</h4>
-        <ul>
-          <li>Use EXPLAIN plans to analyze query performance</li>
-          <li>Avoid SELECT * statements</li>
-          <li>Use appropriate JOIN types</li>
-          <li>Implement proper WHERE clause filtering</li>
-        </ul>
+    @RestController
+    public class ExampleController {
 
-        <h3>Scalability Considerations</h3>
-        <p>As your application grows, consider these scalability options:</p>
-        <ul>
-          <li><strong>Vertical Scaling:</strong> Increase server resources</li>
-          <li><strong>Horizontal Scaling:</strong> Distribute data across multiple servers</li>
-          <li><strong>Read Replicas:</strong> Separate read and write operations</li>
-          <li><strong>Sharding:</strong> Partition data across multiple databases</li>
-        </ul>
+        @ApiOperation(value = "Get a greeting message", notes = "This endpoint returns a simple greeting message.")
+        @GetMapping("/greet")
+        public String greet() {
+            return "Hello, Swagger!";
+        }
+    }
+    </code></pre>
 
-        <h3>Conclusion</h3>
-        <p>Effective database design is crucial for building robust, scalable applications. By following these best practices and staying updated with modern database technologies, you can create systems that perform well and adapt to changing requirements.</p>
-      `,
-      image: 'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=600',
+    <h3>Advantages of Using Swagger</h3>
+    <p>Swagger offers several benefits for API development:</p>
+    <ul>
+      <li><strong>Interactive Documentation:</strong> Provides a web-based UI to explore and test APIs.</li>
+      <li><strong>Standardized Specification:</strong> Ensures consistency in API design using the OpenAPI Specification.</li>
+      <li><strong>Ease of Testing:</strong> Allows developers to test endpoints directly from the Swagger UI.</li>
+      <li><strong>Improved Collaboration:</strong> Simplifies communication between developers and stakeholders.</li>
+      <li><strong>Code Generation:</strong> Generates client SDKs and server stubs in multiple programming languages.</li>
+    </ul>
+
+    <h3>Conclusion</h3>
+    <p>Swagger is a powerful tool for documenting and testing RESTful APIs. By integrating Swagger into your Spring Boot application, you can improve the development process, enhance collaboration, and ensure your APIs are well-documented and easy to use.</p>
+  `,
+      image: 'assets/images/swagger-big.png',
       author: 'Pasang Gelbu Sherpa',
       date: 'March 10, 2024',
-      readTime: '12 min read',
-      tags: ['Database', 'PostgreSQL', 'Optimization', 'Best Practices']
+      readTime: '10 min read',
+      tags: ['Swagger', 'Spring Boot', 'API Documentation', 'RESTful APIs']
     },
     {
       id: 3,
-      title: 'Mastering Git: Advanced Tips and Tricks for Developers',
-      excerpt: 'Discover advanced Git techniques and workflows that will improve your development productivity and collaboration with your team.',
+      title: 'Mastering Git: Basic Syntax and Operations for Beginners',
+      excerpt: 'Learn the basic Git commands like cloning a repository, checking status, adding files, committing changes, pulling, and pushing.',
       content: `
-        <h3>Beyond Basic Git Commands</h3>
-        <p>While most developers are familiar with basic Git commands like add, commit, and push, mastering advanced Git techniques can significantly improve your development workflow and collaboration with team members. This guide will explore powerful Git features that every developer should know.</p>
+    <h3>Introduction to Git</h3>
+    <p>Git is a distributed version control system that helps developers track changes in their code, collaborate with others, and manage their projects efficiently. In this guide, we'll cover the basic Git commands that every developer should know.</p>
 
-        <h3>Advanced Branching Strategies</h3>
-        <p>Effective branching strategies are crucial for team collaboration and project organization:</p>
+    <h3>Cloning a Repository</h3>
+    <p>To start working on an existing project, you can clone its repository using the following command:</p>
+    <pre><code>git clone <repository-url></code></pre>
+    <p>This will create a local copy of the repository on your machine.</p>
 
-        <h4>Git Flow</h4>
-        <p>Git Flow is a branching model that defines specific roles for different branches:</p>
-        <ul>
-          <li><strong>master:</strong> Production-ready code</li>
-          <li><strong>develop:</strong> Integration branch for features</li>
-          <li><strong>feature:</strong> New feature development</li>
-          <li><strong>release:</strong> Prepare for production release</li>
-          <li><strong>hotfix:</strong> Quick fixes for production issues</li>
-        </ul>
+    <h3>Checking the Status</h3>
+    <p>To check the current status of your repository, including any changes made to files, use:</p>
+    <pre><code>git status</code></pre>
+    <p>This command shows which files have been modified, added, or deleted.</p>
 
-        <h4>GitHub Flow</h4>
-        <p>A simpler alternative to Git Flow:</p>
-        <ul>
-          <li>Create feature branches from main</li>
-          <li>Make commits and push regularly</li>
-          <li>Open pull request for review</li>
-          <li>Merge to main after approval</li>
-          <li>Deploy from main branch</li>
-        </ul>
+    <h3>Adding Files</h3>
+    <p>To stage changes for commit, use the following command:</p>
+    <pre><code>git add <file-name></code></pre>
+    <p>To stage all changes, use:</p>
+    <pre><code>git add .</code></pre>
 
-        <h3>Powerful Git Commands</h3>
-        <p>These advanced commands can save you time and help you work more efficiently:</p>
+    <h3>Committing Changes</h3>
+    <p>Once you've staged your changes, you can commit them with a message describing the changes:</p>
+    <pre><code>git commit -m "Your commit message here"</code></pre>
+    <p>Make sure to write clear and concise commit messages to describe the changes.</p>
 
-        <h4>Interactive Rebase</h4>
-        <p>Clean up your commit history before merging:</p>
-        <pre><code>git rebase -i HEAD~3</code></pre>
-        <p>This allows you to:</p>
-        <ul>
-          <li>Squash multiple commits into one</li>
-          <li>Reword commit messages</li>
-          <li>Reorder commits</li>
-          <li>Drop unwanted commits</li>
-        </ul>
+    <h3>Pulling Changes</h3>
+    <p>To fetch and merge changes from a remote repository, use:</p>
+    <pre><code>git pull</code></pre>
+    <p>This ensures your local repository is up-to-date with the remote repository.</p>
 
-        <h4>Cherry Pick</h4>
-        <p>Apply specific commits from one branch to another:</p>
-        <pre><code>git cherry-pick <commit-hash></code></pre>
+    <h3>Pushing Changes</h3>
+    <p>To upload your local commits to a remote repository, use:</p>
+    <pre><code>git push</code></pre>
+    <p>This will update the remote repository with your latest changes.</p>
 
-        <h4>Bisect</h4>
-        <p>Find the commit that introduced a bug using binary search:</p>
-        <pre><code>git bisect start
-git bisect bad HEAD
-git bisect good <known-good-commit></code></pre>
-
-        <h3>Collaboration Best Practices</h3>
-        <p>Working effectively with a team requires following established practices:</p>
-
-        <h4>Commit Message Guidelines</h4>
-        <ul>
-          <li>Use imperative mood in subject line</li>
-          <li>Keep subject line under 50 characters</li>
-          <li>Include detailed description when necessary</li>
-          <li>Reference issue numbers when applicable</li>
-        </ul>
-
-        <h4>Pull Request Etiquette</h4>
-        <ul>
-          <li>Write clear, descriptive titles</li>
-          <li>Provide detailed descriptions</li>
-          <li>Keep changes focused and small</li>
-          <li>Respond promptly to review comments</li>
-          <li>Test thoroughly before requesting review</li>
-        </ul>
-
-        <h3>Git Hooks and Automation</h3>
-        <p>Automate common tasks and enforce standards using Git hooks:</p>
-
-        <h4>Pre-commit Hooks</h4>
-        <ul>
-          <li>Run linting and formatting tools</li>
-          <li>Execute test suites</li>
-          <li>Validate commit messages</li>
-          <li>Check for security vulnerabilities</li>
-        </ul>
-
-        <h4>Pre-push Hooks</h4>
-        <ul>
-          <li>Run comprehensive test suites</li>
-          <li>Perform security scans</li>
-          <li>Check code coverage thresholds</li>
-        </ul>
-
-        <h3>Troubleshooting Common Issues</h3>
-        <p>Every developer encounters Git issues. Here are solutions to common problems:</p>
-
-        <h4>Undoing Changes</h4>
-        <ul>
-          <li><code>git reset --hard HEAD~1</code> - Remove last commit and changes</li>
-          <li><code>git revert <commit></code> - Create new commit that undoes changes</li>
-          <li><code>git checkout -- <file></code> - Discard changes to specific file</li>
-        </ul>
-
-        <h4>Resolving Merge Conflicts</h4>
-        <ul>
-          <li>Use visual merge tools like VS Code or GitKraken</li>
-          <li>Understand conflict markers (<<<, ===, >>>)</li>
-          <li>Test thoroughly after resolving conflicts</li>
-          <li>Consider using merge strategies for recurring conflicts</li>
-        </ul>
-
-        <h3>Conclusion</h3>
-        <p>Mastering advanced Git techniques will make you a more effective developer and better team collaborator. Practice these commands and workflows in safe environments before using them in production projects. Remember that Git's power comes with responsibility – always double-check your actions, especially when rewriting history.</p>
-      `,
-      image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600',
+    <h3>Conclusion</h3>
+    <p>These basic Git commands are essential for any developer working with version control. By mastering these operations, you can effectively manage your codebase and collaborate with your team.</p>
+  `,
+      image: 'assets/images/git.png',
       author: 'Pasang Gelbu Sherpa',
       date: 'March 5, 2024',
-      readTime: '10 min read',
-      tags: ['Git', 'Version Control', 'Development', 'Productivity']
+      readTime: '8 min read',
+      tags: ['Git', 'Version Control', 'Development', 'Basics']
     }
   ];
   protected readonly faArrowRight = faArrowRight;

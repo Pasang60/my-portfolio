@@ -1,11 +1,12 @@
 import {Component, Input} from '@angular/core';
-import {faExternalLink, faHeart} from '@fortawesome/free-solid-svg-icons';
+import {faEnvelope, faExternalLink, faHeart, IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {CommonModule} from '@angular/common';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 
 interface SocialLink {
-  icon: string;
+  icon: IconDefinition;
   href: string;
   label: string;
 }
@@ -27,9 +28,9 @@ export class FooterComponent {
   currentYear = new Date().getFullYear();
 
   socialLinks: SocialLink[] = [
-    { icon: 'github', href: '#', label: 'GitHub' },
-    { icon: 'linkedin', href: '#', label: 'LinkedIn' },
-    { icon: 'mail', href: '#contact', label: 'Email' }
+    { icon: faGithub, href: 'https://github.com/Pasang60', label: 'GitHub' },
+    { icon: faLinkedin, href: 'https://www.linkedin.com/in/pasang-sherpa-a55a93319/', label: 'LinkedIn' },
+    { icon: faEnvelope, href: '#contact', label: 'Email' }
   ];
 
   quickLinks: Link[] = [

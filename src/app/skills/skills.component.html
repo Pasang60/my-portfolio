@@ -111,10 +111,6 @@
               <h5 class="fw-bold mb-2" [class.text-white]="darkMode">
                 {{ achievement.title }}
               </h5>
-              <p class="text-muted small mb-2">{{ achievement.date }}</p>
-              <p class="mb-0" [class.text-light]="darkMode" [class.text-muted]="!darkMode">
-                {{ achievement.description }}
-              </p>
             </div>
           </div>
         </div>
@@ -122,46 +118,7 @@
     </div>
   </div>
 
-  <!-- Achievement Modal -->
-  <div class="modal fade" id="achievementModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content" [class.bg-dark]="darkMode" [class.text-white]="darkMode">
-        <div class="modal-header border-0">
-          <h5 class="modal-title">{{ selectedAchievement?.title }}</h5>
-          <button
-            type="button"
-            class="btn-close"
-            [class.btn-close-white]="darkMode"
-            data-bs-dismiss="modal"
-            aria-label="Close"></button>
-        </div>
-        <div class="modal-body" *ngIf="selectedAchievement">
-          <img
-            [src]="selectedAchievement.image"
-            [alt]="selectedAchievement.title"
-            class="img-fluid rounded mb-4" />
 
-          <div class="mb-3">
-            <span class="badge bg-primary">{{ selectedAchievement.date }}</span>
-          </div>
-
-          <h6 class="fw-bold mb-3">Details</h6>
-          <p [class.text-light]="darkMode" [class.text-muted]="!darkMode">
-            {{ selectedAchievement.details }}
-          </p>
-
-          <h6 class="fw-bold mb-3 mt-4">Technologies Used</h6>
-          <div class="d-flex flex-wrap gap-2">
-            <span
-              *ngFor="let tech of selectedAchievement.technologies"
-              class="badge bg-secondary px-3 py-2">
-              {{ tech }}
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 

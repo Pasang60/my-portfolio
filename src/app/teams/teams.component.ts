@@ -15,7 +15,7 @@ interface TeamMember {
   skills: string[];
   github: string;
   linkedin: string;
-  email: string;
+  portfolio: string;
   projects: string[];
 }
 @Component({
@@ -36,9 +36,9 @@ export class TeamsComponent {
       image: 'assets/images/utsab.jpg',
       bio: 'Backend developer experienced in building secure and scalable applications using Java and Spring Boot. Skilled in PostgreSQL database design, REST API development, and API testing with Postman. Focused on clean architecture and performance optimization.',
       skills: ['Java', 'Spring Boot', 'Postgres', 'Postman'],
-      github: '#',
+      github: 'https://github.com/dahalutsab',
       linkedin: '#',
-      email: 'dlutsab@gmail.com',
+      portfolio: 'https://www.dahalutsab.com.np/',
       projects: ['CollegeHub', 'E-Commerce Dashboard']
     },
     {
@@ -50,7 +50,7 @@ export class TeamsComponent {
       skills: ['Angular', 'PHP', 'CSS', 'Figma'],
       github: '#',
       linkedin: '#',
-      email: 'priya@example.com',
+      portfolio: 'priya@example.com',
       projects: ['Project Archiver', 'CollegeHub']
     },
     {
@@ -60,9 +60,9 @@ export class TeamsComponent {
       image: 'assets/images/photo.png',
       bio: 'Backend developer with strong expertise in Java and Spring Boot, focused on building scalable REST APIs and optimized database solutions using PostgreSQL. Proficient in API testing and debugging with Postman and maintaining clean service-layer design.',
       skills: ['Java', 'Spring Boot', 'Postgres', 'Postman'],
-      github: '#',
-      linkedin: '#',
-      email: 'amit@example.com',
+      github: 'https://github.com/Pasang60',
+      linkedin: 'https://www.linkedin.com/in/pasang-sherpa-a55a93319/',
+      portfolio: 'amit@example.com',
       projects: ['Cyber Cafe Management', 'Project Archiver']
     },
     {
@@ -74,7 +74,7 @@ export class TeamsComponent {
       skills: ['Java', 'Spring Boot', 'Postgres', 'Postman'],
       github: '#',
       linkedin: '#',
-      email: 'bikash@example.com',
+      portfolio: 'bikash@example.com',
       projects: ['Project Archiver', 'Cyber Cafe Management']
     }
   ];
